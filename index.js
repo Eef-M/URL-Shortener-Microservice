@@ -12,12 +12,12 @@ app.use(cors());
 
 app.use('/public', express.static(`${process.cwd()}/public`));
 
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
 // Your first API endpoint
-app.get('/api/hello', function (req, res) {
+app.get('/api/hello', function(req, res) {
   res.json({ greeting: 'hello API' });
 });
 
@@ -27,7 +27,7 @@ app.use(bodyParser.json())
 let dataUrl = [];
 
 //POST
-app.post("/api/shorturl/new", (req, res) => {
+app.post("/api/shorturl", (req, res) => {
 
   const getHostnameFromRegex = (url) => {
     const matches = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
@@ -65,6 +65,6 @@ app.get('/api/shorturl/:num', (req, res) => {
 
 })
 
-app.listen(port, function () {
+app.listen(port, function() {
   console.log(`Listening on port http://localhost:${port}`);
 });
